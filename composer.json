@@ -1,0 +1,20 @@
+{
+    "name": "hexlet/code",
+    "description": "First project on Hexlet",
+    "type": "project",
+    "autoload": {
+	"files": [
+	"bin/brain-games.php"
+	],
+	"psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "artem alekseev",
+            "email": "temchic1@gmail.com"
+        }
+    ],
+    "require": {}
+}
