@@ -1,7 +1,8 @@
 {
     "name": "hexlet/code",
-    "description": "First project on Hexlet",
+    "bin": ["bin/brain-games"],
     "type": "project",
+    "description": "First project on Hexlet",
     "autoload": {
 	"files": [
 	"bin/brain-games.php"
@@ -16,5 +17,6 @@
             "email": "temchic1@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {}
 }
