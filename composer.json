@@ -5,7 +5,7 @@
     "description": "First project on Hexlet",
     "autoload": {
 	"files": [
-	"bin/brain-games.php"
+		"src/Cli.php"
 	],
 	"psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -18,5 +18,7 @@
         }
     ],
     "license": "MIT",
-    "require": {}
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.13"
+    }
 }
