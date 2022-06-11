@@ -1,10 +1,10 @@
 {
-    "name": "hexlet/code",
+    "name": "dr-krokdi/php-project-lvl1",
     "bin": [
         "bin/brain-games",
         "bin/brain-even"],
-    "type": "project",
-    "description": "First project on Hexlet",
+    "type": "library",
+    "description": "Brain Games",
     "autoload": {
 	"files": [
 		"src/Cli.php"
