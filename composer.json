@@ -2,7 +2,8 @@
     "name": "dr-krokdi/php-project-lvl1",
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"],
+        "bin/brain-even",
+        "bin/brain-calc"],
     "type": "library",
     "description": "Brain Games",
     "autoload": {
