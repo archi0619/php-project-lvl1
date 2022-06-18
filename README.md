@@ -3,4 +3,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
+brain-even game:
 [![asciicast](https://asciinema.org/a/txlNTiGE3eRjgNZwmywixO1ph.svg)](https://asciinema.org/a/txlNTiGE3eRjgNZwmywixO1ph)
+
+brain-calc game:
+[![asciicast](https://asciinema.org/a/UM1MIDyDBjz5idFfAbv7a2HrD.svg)](https://asciinema.org/a/UM1MIDyDBjz5idFfAbv7a2HrD)
