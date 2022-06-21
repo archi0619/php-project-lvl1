@@ -3,7 +3,8 @@
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
-        "bin/brain-calc"],
+        "bin/brain-calc",
+        "bin/brain-gcd"],
     "type": "library",
     "description": "Brain Games",
     "autoload": {
