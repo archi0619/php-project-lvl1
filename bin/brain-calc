@@ -16,9 +16,9 @@ if (file_exists($autoloadPath1)) {
 
 function brainCalc()
 {
-    line('Welcome to the Brain Games!');
+    line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
-    line("Hello, $name!");
+    line("Hello, %s!", $name);
     line('What is the result of the expression?');
     $winSeries = 3;
     for ($i = 0; $i < $winSeries; $i++) {
