@@ -22,4 +22,4 @@ function isEven()
         }
     };
     line("Congratulations, $name!");
-};
+}

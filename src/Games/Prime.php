@@ -33,6 +33,5 @@ function brainPrime()
             return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
         }
     };
-    
     line("Congratulations, $name!");
 }
