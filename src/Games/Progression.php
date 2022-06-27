@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function randomProgression() :array
+function randomProgression(): array
 {
     $start = rand(0, 10);
     $step = rand(1, 10);
@@ -16,7 +16,7 @@ function randomProgression() :array
     return $result;
 }
 
-function brainProgression() 
+function brainProgression()
 {
     $name = greeting();
     line('What number is missing in the progression?');

@@ -26,7 +26,7 @@ function brainGCD()
     line("Congratulations, $name!");
 }
 
-function gcd($a, $b) :int
+function gcd($a, $b): int
 {
     return ($a % $b) ? gcd($b, $a % $b) : $b;
 }
