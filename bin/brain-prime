@@ -4,6 +4,7 @@
 
 use function cli\line;
 use function cli\prompt;
+use function Src\Games\Prime\brainPrime;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -14,38 +15,4 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-function primeCheck($num)
-{
-    for ($i = 2; $i < $num / 2; $i++) {
-        if ($num % $i === 0) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function brainPrime()
-{
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    
-    for ($i = 0; $i < 3; $i++) {
-        $num = rand($min = 2, $max = 50);
-        line("Question: $num");
-        $answer = prompt("Your answer: ");
-        if (primeCheck($num)) {
-            $correctAnswer = "yes";
-        } else {
-            $correctAnswer = "no";
-        }
-        if (primeCheck($num) && $answer === $correctAnswer || !primeCheck($num) && $answer === $correctAnswer) {
-            line('Correct!');
-        } else {
-            return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-        }
-    };
-    line("Congratulations, $name!");
-}
 brainPrime();
