@@ -6,14 +6,13 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function checkAnswer($correctAnswer, $answer, $name)
+function randomProgression()
 {
-    $result = '';
-    if ($correctAnswer === $answer) {
-        $result = ("Correct!");
-    } elseif ($correctAnswer !== $answer) {
-        die("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-    }
+    $start = rand(0, 10);
+    $step = rand(1, 10);
+    $randomRange = rand(5, 10);
+    $endSequence = $start + ($step * $randomRange);
+    $result = range($start, $endSequence, $step);
     return $result;
 }
 
@@ -21,27 +20,20 @@ function brainProgression()
 {
     $name = greeting();
     line('What number is missing in the progression?');
-    $win = [];
     for ($i = 0; $i < 3; $i++) {
-        $start = rand(2, 10);
-        $step = rand(2, 9);
-        $maxEnd = 120;
-        $progression = range($start, $maxEnd, $step);
-        $strProgression = implode(" ", $progression);
-        $array = explode(" ", $strProgression);
-        $randNum3 = rand(1, count($array));
-        $replacement = array_splice($array, $randNum3, 1, "..");
-        $inQuestion = implode(" ", $array);
-        $inAnswer = implode(" ", $replacement);
-        $question = [];
-        $question = ("Question: $inQuestion");
-        line($question);
-        $answer = prompt("Your answer");
-        $last = checkAnswer($inAnswer, $answer, $name);
-        line($last);
-        $win[] = $last[$i];
-        if (count($win) === 3) {
-            line("Congratulations, $name!");
+        $progression = randomProgression();
+        $randomReplacementIndex = array_rand($progression);
+        $answer = $progression[$randomReplacementIndex];
+        $progression[$randomReplacementIndex] = "..";
+        $question = implode(' ', $progression);
+        line("Question: $question");
+        $inAnswer = prompt("Your answer ");
+        $correctAnswer = $answer;
+        if ($inAnswer == $correctAnswer) {
+            line("Correct!");
+        } else {
+            return line("'$inAnswer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
         }
     }
+    line("Congratulations, $name!");
 }
