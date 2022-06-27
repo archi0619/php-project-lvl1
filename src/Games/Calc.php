@@ -28,7 +28,7 @@ function brainCalc()
     line("Congratulations, $name!");
 }
 
-function calcForGame($num1, $num2, $operation)
+function calcForGame(int $num1, int $num2, $operation)
 {
     switch ($operation) {
         case '+':

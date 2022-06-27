@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function primeCheck($num)
+function primeCheck(int $num) :bool
 {
     for ($i = 2; $i < $num / 2; $i++) {
         if ($num % $i === 0) {
