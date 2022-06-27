@@ -11,7 +11,9 @@
     "description": "Brain Games",
     "autoload": {
 	"files": [
-		"src/Cli.php"
+		"src/Cli.php",
+        "src/Engine.php",
+        "src/Games/Calc.php"
 	],
 	"psr-4": {
             "Hexlet\\Code\\": "src/"
