@@ -24,15 +24,10 @@ function brainPrime()
     for ($i = 0; $i < 3; $i++) {
         $num = rand($min = 2, $max = 50);
         line("Question: $num");
-        $answer = prompt("Your answer: ");
+        $answer = prompt("Your answer ");
+        $correctAnswer = primeCheck($num) ? 'yes' : 'no';
 
-        if (primeCheck($num)) {
-            $correctAnswer = "yes";
-        } else {
-            $correctAnswer = "no";
-        }
-
-        if (primeCheck($num) && $answer === $correctAnswer || !primeCheck($num) && $answer === $correctAnswer) {
+        if ($answer == $correctAnswer) {
             line('Correct!');
         } else {
             return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
