@@ -7,7 +7,7 @@ use function Src\Engine\playGame;
 const GAME_NAME = 'Gcd';
 const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
-function play(): mixed
+function play(): void
 {
     $generateTask = function (): array {
         $number1 = rand(1, 99);
