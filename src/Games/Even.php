@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function isEven()
+function isEven(): mixed
 {
     $name = greeting();
     line('Answer "yes" if the number is even, otherwise answer "no".');

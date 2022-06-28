@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function brainCalc()
+function brainCalc(): mixed
 {
     $name = greeting();
     line("What is the result of the expression?");
@@ -28,7 +28,7 @@ function brainCalc()
     line("Congratulations, $name!");
 }
 
-function calcForGame(int $num1, int $num2, $operation)
+function calcForGame(int $num1, int $num2, string $operation): mixed
 {
     switch ($operation) {
         case '+':

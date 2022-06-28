@@ -2,8 +2,6 @@
 
 <?php
 
-use function cli\line;
-use function cli\prompt;
 use function Src\Games\Prime\brainPrime;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';

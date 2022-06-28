@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 
-function brainGCD()
+function brainGCD(): mixed
 {
     $name = greeting();
     line('Find the greatest common divisor of given numbers.');

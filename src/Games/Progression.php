@@ -16,7 +16,7 @@ function randomProgression(): array
     return $result;
 }
 
-function brainProgression()
+function brainProgression(): mixed
 {
     $name = greeting();
     line('What number is missing in the progression?');

@@ -16,7 +16,7 @@ function primeCheck(int $num): bool
     return true;
 }
 
-function brainPrime()
+function brainPrime(): mixed
 {
     $name = greeting();
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
