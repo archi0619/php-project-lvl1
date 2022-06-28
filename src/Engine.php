@@ -4,7 +4,7 @@ namespace Src\Engine;
 
 use Src\Games\Even;
 use Src\Games\Calc;
-use Src\Games\GCD;
+use Src\Games\Gcd;
 use Src\Games\Progression;
 use Src\Games\Prime;
 
