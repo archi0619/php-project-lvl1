@@ -7,7 +7,7 @@ use function Src\Engine\playGame;
 const GAME_NAME = 'Calc';
 const GAME_DESCRIPTION = 'What is the result of the expression?';
 
-function calculate(int $num1, int $num2, string $operation): mixed
+function calculate(int $num1, int $num2, string $operation): int
 {
     switch ($operation) {
         case '+':
