@@ -2,35 +2,33 @@
 
 namespace Src\Games\Prime;
 
-use function Src\Engine\playGame;
+use function cli\line;
+use function cli\prompt;
 
-const GAME_NAME = 'Prime';
-const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-function isPrime(int $num): bool
+function brainPrime(string $name): void
 {
-    if ($num <= 1 || $num % 2 === 0 || $num % 3 === 0) {
-        return false;
-    } elseif ($num === 2 || $num === 3) {
-        return true;
-    } else {
-        for ($i = 5; $i < $num; $i++) {
-            if ($num % $i === 0) {
-                return false;
+    line('Answer "yes" if the number is prime. Otherwise answer "no".');
+    $i = 0;
+    do {
+        $num = rand($min = 2, $max = 200);
+        $correctAnswer = 'yes';
+        for ($check = $num - 1; $check > 1; $check--) {
+            if ($num % $check == 0) {
+                $correctAnswer = 'no';
             }
         }
-        return true;
-    }
-}
+        line("Question: %s", $num);
+        $answer = prompt('Your answer ');
+        if ($answer === $correctAnswer) {
+            line('Correct!');
+            $i++;
+        } else {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\nLet's try again, %s!", $name);
+            break;
+        }
+    } while ($i < 3);
 
-function play(): void
-{
-    $generateTask = function (): array {
-        $number = rand(1, 99);
-        return [
-            'question' => $number,
-            'answer' => isPrime($number) ? 'yes' : 'no'
-        ];
-    };
-    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
+    if ($i == 3) {
+        line("Congratulations, %s!", $name);
+    }
 }

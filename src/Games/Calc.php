@@ -2,35 +2,43 @@
 
 namespace Src\Games\Calc;
 
-use function Src\Engine\playGame;
+use function cli\line;
+use function cli\prompt;
 
-const GAME_NAME = 'Calc';
-const GAME_DESCRIPTION = 'What is the result of the expression?';
-
-function calculate(int $num1, int $num2, string $operation): string
+function brainCalc(string $name): void
 {
-    switch ($operation) {
-        case '+':
-            return $num1 + $num2;
-        case '-':
-            return $num1 - $num2;
-        case '*':
-            return $num1 * $num2;
+    $operation = ['+', '-', '*'];
+    line("What is the result of the expression?");
+    $i = 0;
+    do {
+        $num1 = rand(1, 50);
+        $num2 = rand(1, 20);
+        $correctAnswer = 0;
+        $operand = rand(0, 2);
+        $question = "$num1 $operation[$operand] $num2";
+        line("Question: %s", $question);
+        switch ($operation[$operand]) {
+            case '+':
+                $correctAnswer = $num1 + $num2;
+                break;
+            case '-':
+                $correctAnswer = $num1 - $num2;
+                break;
+            case '*':
+                $correctAnswer = $num1 * $num2;
+                break;
+        }
+        $answer = prompt('Your answer');
+        if ($answer == intval($correctAnswer)) {
+            line('Correct!');
+            $i++;
+        } else {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\nLet's try again, %s!", $name);
+            break;
+        }
+    } while ($i < 3);
+
+    if ($i === 3) {
+        line("Congratulations, %s!", $name);
     }
-}
-
-function play(): void
-{
-    $generateTask = function (): array {
-        $operations = ['+','-','*'];
-        $operation = $operations[array_rand($operations)];
-        $number1 = rand(1, 50);
-        $number2 = rand(1, 25);
-
-        return [
-            'question' => "{$number1} {$operation} {$number2}",
-            'answer' => calculate($number1, $number2, $operation)
-        ];
-    };
-    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }

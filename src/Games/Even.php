@@ -2,21 +2,29 @@
 
 namespace Src\Games\Even;
 
-use function Src\Engine\playGame;
+use function cli\line;
+use function cli\prompt;
 
-const GAME_NAME = 'Even';
-const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-function play(): void
+function brainEven(string $name): void
 {
-    $generateTask = function (): array {
-        $question = rand(1, 99);
+    line('Answer "yes" if the number is even, otherwise answer "no".');
+    $i = 0;
+    do {
+        $num = rand($min = 1, $max = 99);
+        line("Question: %s", $num);
+        $answer = prompt('Your answer ');
+        $num % 2 === 0 ? $correctAnswer = 'yes' : $correctAnswer = 'no';
+        if ($answer === $correctAnswer) {
+            line('Correct!');
+            $i++;
+        } else {
+            print_r("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\n");
+            line("Let's try again, %s!", $name);
+            break;
+        }
+    } while ($i < 3);
 
-        return [
-            'question' => $question,
-            'answer' => $question % 2 === 0 ? 'yes' : 'no'
-        ];
-    };
-
-    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
+    if ($i === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }

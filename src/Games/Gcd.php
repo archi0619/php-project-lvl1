@@ -2,33 +2,39 @@
 
 namespace Src\Games\Gcd;
 
-use function Src\Engine\playGame;
+use function cli\line;
+use function cli\prompt;
 
-const GAME_NAME = 'Gcd';
-const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
-
-function play(): void
+function brainGCD(string $name): void
 {
-    $generateTask = function (): array {
-        $number1 = rand(1, 99);
-        $number2 = rand(1, 99);
-        $divisors = array_intersect(gcd($number1), gcd($number2));
-        return [
-            'question' => "{$number1} {$number2}",
-            'answer' => end($divisors)
-        ];
-    };
-    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
-}
-
-function gcd(int $num): array
-{
-    $divisors = [];
-
-    for ($i = 1; $i <= $num; $i++) {
-        if (is_int($num / $i)) {
-            $divisors[] = $i;
+    line("Find the greatest common divisor of given numbers.");
+    $i = 0;
+    do {
+        $num1 = rand($min = 2, $max = 50);
+        $num2 = rand($min = 2, $max = 50);
+        $question = "$num1 $num2";
+        line("Question: %s", $question);
+        $num1 > $num2 ? $least = $num2 : $least = $num1;
+        $gcd = 1;
+        for ($numberCheck = $least; $numberCheck > 1; $numberCheck--) {
+            $modul1 = $num1 % $numberCheck;
+            $modul2 = $num2 % $numberCheck;
+            if ($modul1 === 0 && $modul2 === 0) {
+                $gcd = $numberCheck;
+                break;
+            }
         }
+        $answer = prompt('Your answer');
+        if ($answer == $gcd) {
+            line('Correct!');
+            $i++;
+        } else {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$gcd}'. \nLet's try again, %s!", $name);
+            break;
+        }
+    } while ($i < 3);
+
+    if ($i == 3) {
+        line("Congratulations, %s!", $name);
     }
-    return $divisors;
 }

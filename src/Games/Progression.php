@@ -2,34 +2,39 @@
 
 namespace Src\Games\Progression;
 
-use function Src\Engine\playGame;
+use function cli\line;
+use function cli\prompt;
 
-const GAME_NAME = 'Progression';
-const GAME_DESCRIPTION = 'What number is missing in the progression?';
-
-function getProgression(int $size, int $start, int $step): array
+function brainProgression(string $name): void
 {
-    $progression = [];
-    for ($i = 0; $i < $size; $i++) {
-        $progression[] = $start + $i * $step;
+    line("What number is missing in the progression?");
+    $i = 0;
+    do {
+        $array = [];
+        $array[0] = rand(2, 20);
+        $step = rand(2, 15);
+        $hiddenIndex = rand(0, 14);
+        for ($index = 0; $index < 15; $index++) {
+            $array[] = $array[$index] + $step;
+        }
+        $correctAnswer = $array[$hiddenIndex];
+        $array[$hiddenIndex] = "..";
+        print_r("Question: ");
+        foreach ($array as $number) {
+            print_r("{$number} ");
+        }
+        print_r("\n");
+        $answer = prompt('Your answer');
+        if ($answer == $correctAnswer) {
+            line('Correct!');
+            $i++;
+        } else {
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'. \nLet's try again, %s!", $name);
+            break;
+        }
+    } while ($i < 3);
+
+    if ($i == 3) {
+        line("Congratulations, %s!", $name);
     }
-    return $progression;
-}
-
-function play(): void
-{
-    $generateTask = function (): array {
-        $progressionSize = 15;
-        $progressionStart = random_int(2, 20);
-        $progressionStep = random_int(2, 15);
-        $progression = getProgression($progressionSize, $progressionStart, $progressionStep);
-        $secretKey = array_rand($progression);
-        $secretValue = $progression[$secretKey];
-        $progression[$secretKey] = '..';
-        return [
-            'question' => implode(' ', $progression),
-            'answer' => $secretValue
-        ];
-    };
-    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }
