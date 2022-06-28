@@ -1,7 +1,37 @@
-### Hexlet tests and linter status:
+## Brain Games
+
+## Hexlet tests and linter status:
 [![Actions Status](https://github.com/archi0619/php-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/archi0619/php-project-lvl1/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+
+Brain Games is a 5 console games:
+
+1. 'brain-even'. You should answer, is number evenor not.
+
+2. 'brain-calc'. You need to find the result of expression.
+
+3. 'brain-gcd'. Find the greatest common divisor (GCD) of two numbers.
+
+4. 'brain-progression'. Wright the missed number in progression.
+
+5. 'brain-prime'. Answer the question about 'Is given number is prime?'.
+
+## Requirements:
+
+1. PHP 7 and more.
+
+2. Composer.
+
+## Setup
+
+```sh
+$ git clone https://github.com/archi0619/php-project-lvl1.git
+$ cd php-project-lvl1
+$ make install
+```
+
+## Games demonstration:
 
 brain-even game:
 [![asciicast](https://asciinema.org/a/txlNTiGE3eRjgNZwmywixO1ph.svg)](https://asciinema.org/a/txlNTiGE3eRjgNZwmywixO1ph)
