@@ -2,33 +2,12 @@
 
 namespace Src\Games\Calc;
 
-use function cli\line;
-use function cli\prompt;
-use function Src\Engine\greeting;
+use function Src\Engine\playGame;
 
-function brainCalc(): mixed
-{
-    $name = greeting();
-    line("What is the result of the expression?");
-    for ($i = 0; $i < 3; $i++) {
-        $num1 = rand($min = 1, $max = 30);
-        $num2 = rand($min = 1, $max = 15);
-        $operands = ['+', '-', '*'];
-        $operandsForGame = $operands[mt_rand(0, 2)];
-        $question = "{$num1} {$operandsForGame} {$num2}";
-        line("Question: {$question}?");
-        $answer = prompt("Your answer ");
-        $correctAnswer = calcForGame($num1, $num2, $operandsForGame);
-        if ($answer == $correctAnswer) {
-            line("Correct!");
-        } elseif ($answer !== $correctAnswer) {
-            return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-        }
-    }
-    line("Congratulations, $name!");
-}
+const GAME_NAME = 'Calc';
+const GAME_DESCRIPTION = 'What is the result of the expression?';
 
-function calcForGame(int $num1, int $num2, string $operation): mixed
+function calculate(int $num1, int $num2, string $operation): float
 {
     switch ($operation) {
         case '+':
@@ -38,4 +17,20 @@ function calcForGame(int $num1, int $num2, string $operation): mixed
         case '*':
             return $num1 * $num2;
     }
+}
+
+function play(): void
+{
+    $generateTask = function (): array {
+        $operations = ['+','-','*'];
+        $operation = $operations[array_rand($operations)];
+        $number1 = rand(1, 50);
+        $number2 = rand(1, 25);
+
+        return [
+            'question' => "{$number1} {$operation} {$number2}",
+            'answer' => calculate($number1, $number2, $operation)
+        ];
+    };
+    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }

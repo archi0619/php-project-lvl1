@@ -2,24 +2,21 @@
 
 namespace Src\Games\Even;
 
-use function cli\line;
-use function cli\prompt;
-use function Src\Engine\greeting;
+use function Src\Engine\playGame;
 
-function isEven(): mixed
+const GAME_NAME = 'Even';
+const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function play(): void
 {
-    $name = greeting();
-    line('Answer "yes" if the number is even, otherwise answer "no".');
-    for ($i = 0; $i < 3; $i++) {
-        $num = rand($min = 1, $max = 30);
-        $correctAnswer = $num % 2 === 0 ? 'yes' : 'no';
-        line("Question: $num");
-        $answer = prompt("Your answer: ");
-        if ($answer === $correctAnswer) {
-            line('Correct!');
-        } else {
-            return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-        }
+    $generateTask = function (): array {
+        $question = rand(1, 99);
+
+        return [
+            'question' => $question,
+            'answer' => $question % 2 === 0 ? 'yes' : 'no'
+        ];
     };
-    line("Congratulations, $name!");
+
+    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }

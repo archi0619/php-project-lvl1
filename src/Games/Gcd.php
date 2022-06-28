@@ -2,31 +2,34 @@
 
 namespace Src\Games\Gcd;
 
-use function cli\line;
-use function cli\prompt;
-use function Src\Engine\greeting;
+use function Src\Engine\playGame;
 
-function brainGCD(): mixed
+const GAME_NAME = 'Gcd';
+const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
+
+function play(): void
 {
-    $name = greeting();
-    line('Find the greatest common divisor of given numbers.');
-    for ($i = 0; $i < 3; $i++) {
-        $num1 = rand($min = 1, $max = 50);
-        $num2 = rand($min = 1, $max = 50);
-        $question = "{$num1} {$num2}";
-        line("Question: {$question}");
-        $answer = prompt("Your answer");
-        $correctAnswer = gcd($num1, $num2);
-        if ($answer == $correctAnswer) {
-            line('Correct!');
-        } else {
-            return line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-        }
-    }
-    line("Congratulations, $name!");
+    $generateTask = function (): array {
+        $number1 = rand(1, 99);
+        $number2 = rand(1, 99);
+        $divisors = array_intersect(gcd($number1),gcd($number2));
+
+        return [
+            'question' => "{$number1} {$number2}",
+            'answer' => end($divisors)
+        ];
+    };
+    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }
 
-function gcd($a, $b): bool
+function gcd(int $num): array
 {
-    return ($a % $b) ? gcd($b, $a % $b) : $b;
+    $divisors = [];
+
+    for ($i = 1; $i <= $num; $i++) {
+        if (is_int($num / $i)) {
+            $divisors[] = $i;
+        }
+    }
+    return $divisors;
 }

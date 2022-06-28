@@ -2,38 +2,34 @@
 
 namespace Src\Games\Progression;
 
-use function cli\line;
-use function cli\prompt;
-use function Src\Engine\greeting;
+use function Src\Engine\playGame;
 
-function randomProgression(): array
+const GAME_NAME = 'Progression';
+const GAME_DESCRIPTION = 'What number is missing in the progression?';
+
+function getProgression(int $size, int $start, int $step): array
 {
-    $start = rand(0, 10);
-    $step = rand(1, 10);
-    $randomRange = rand(5, 10);
-    $endSequence = $start + ($step * $randomRange);
-    $result = range($start, $endSequence, $step);
-    return $result;
+    $progression = [];
+    for ($i = 0; $i < $size; $i++) {
+        $progression[] = $start + $i * $step;
+    }
+    return $progression;
 }
 
-function brainProgression(): mixed
+function play(): void
 {
-    $name = greeting();
-    line('What number is missing in the progression?');
-    for ($i = 0; $i < 3; $i++) {
-        $progression = randomProgression();
-        $randomReplacementIndex = array_rand($progression);
-        $answer = $progression[$randomReplacementIndex];
-        $progression[$randomReplacementIndex] = "..";
-        $question = implode(' ', $progression);
-        line("Question: $question");
-        $inAnswer = prompt("Your answer ");
-        $correctAnswer = $answer;
-        if ($inAnswer == $correctAnswer) {
-            line("Correct!");
-        } else {
-            return line("'$inAnswer' is wrong answer ;(. Correct answer was '$correctAnswer'.\nLet's try again, $name!");
-        }
-    }
-    line("Congratulations, $name!");
+    $generateTask = function (): array {
+        $progressionSize = 15;
+        $progressionStart = random_int(2, 20);
+        $progressionStep = random_int(2, 15);
+        $progression = getProgression($progressionSize, $progressionStart, $progressionStep);
+        $secretKey = array_rand($progression);
+        $secretValue = $progression[$secretKey];
+        $progression[$secretKey] = '..';
+        return [
+            'question' => implode(' ', $progression),
+            'answer' => $secretValue
+        ];
+    };
+    playGame(GAME_NAME, GAME_DESCRIPTION, $generateTask);
 }

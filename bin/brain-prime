@@ -2,7 +2,7 @@
 
 <?php
 
-use function Src\Games\Prime\brainPrime;
+use function Src\Games\Prime\play;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -13,4 +13,4 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-brainPrime();
+play();
