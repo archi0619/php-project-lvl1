@@ -13,7 +13,6 @@ function play(): void
         $number1 = rand(1, 99);
         $number2 = rand(1, 99);
         $divisors = array_intersect(gcd($number1),gcd($number2));
-
         return [
             'question' => "{$number1} {$number2}",
             'answer' => end($divisors)
