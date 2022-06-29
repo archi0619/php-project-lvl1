@@ -29,7 +29,20 @@ Brain Games is a 5 console games:
 $ git clone https://github.com/archi0619/php-project-lvl1.git
 $ cd php-project-lvl1
 $ make install
+$ make validate
 ```
+
+## Start game:
+
+Use comman 'make' with name of the game, for example:
+
+```sh
+$ make brain-even
+$ make brain-calc
+```
+Or use command:
+
+./bin/name_of_the_game
 
 ## Games demonstration:
 
