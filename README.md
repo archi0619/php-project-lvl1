@@ -5,9 +5,11 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a79c57dabdb17a74e834/maintainability)](https://codeclimate.com/github/archi0619/php-project-lvl1/maintainability)
 
+
+
 Brain Games is a 5 console games:
 
-1. 'brain-even'. You should answer, is number evenor not.
+1. 'brain-even'. You should answer, is number even or not.
 
 2. 'brain-calc'. You need to find the result of expression.
 
@@ -15,13 +17,13 @@ Brain Games is a 5 console games:
 
 4. 'brain-progression'. Wright the missed number in progression.
 
-5. 'brain-prime'. Answer the question about 'Is given number is prime?'.
+5. 'brain-prime'. Answer the question 'Is given number is prime?'.
 
 ## Requirements:
 
 1. PHP 7 and more.
 
-2. Composer.
+2. Composer 2.3.5 and more.
 
 ## Setup
 
@@ -29,7 +31,6 @@ Brain Games is a 5 console games:
 $ git clone https://github.com/archi0619/php-project-lvl1.git
 $ cd php-project-lvl1
 $ make install
-$ make validate
 ```
 
 ## Start game:
