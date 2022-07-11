@@ -29,7 +29,8 @@ function brainProgression(string $name): void
             line('Correct!');
             $i++;
         } else {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'. \nLet's try again, %s!", $name);
+            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
+            line("Let's try again, %s!", $name);
             break;
         }
     } while ($i < 3);
