@@ -23,7 +23,7 @@ Brain Games is a 5 console games:
 
 1. PHP 7 and more.
 
-2. Composer 2.3.5 and more.
+2. Composer (global installed).
 
 ## Setup
 
