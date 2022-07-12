@@ -5,7 +5,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a79c57dabdb17a74e834/maintainability)](https://codeclimate.com/github/archi0619/php-project-lvl1/maintainability)
 
-
+[![PHPCS TEST](https://github.com/archi0619/php-project-lvl1/actions/workflows/phpcstest.yml/badge.svg?branch=main)](https://github.com/archi0619/php-project-lvl1/actions/workflows/phpcstest.yml)
 
 Brain Games is a 5 console games:
 
