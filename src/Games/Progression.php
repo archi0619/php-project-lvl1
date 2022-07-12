@@ -2,40 +2,35 @@
 
 namespace Src\Games\Progression;
 
-use function cli\line;
-use function cli\prompt;
+use function Src\Engine\play;
 
-function brainProgression(string $name): void
+const DESCRIPTION = "What number is missing in the progression?";
+const PROGRESSION_LENGTH = 15;
+
+function makeProgression($start, $step, $progressionLength = 15)
 {
-    line("What number is missing in the progression?");
-    $i = 0;
-    do {
-        $array = [];
-        $array[0] = rand(2, 20);
-        $step = rand(2, 15);
-        $hiddenIndex = rand(0, 14);
-        for ($index = 0; $index < 15; $index++) {
-            $array[] = $array[$index] + $step;
-        }
-        $correctAnswer = $array[$hiddenIndex];
-        $array[$hiddenIndex] = "..";
-        print_r("Question: ");
-        foreach ($array as $number) {
-            print_r("{$number} ");
-        }
-        print_r("\n");
-        $answer = prompt('Your answer');
-        if ($answer == $correctAnswer) {
-            line('Correct!');
-            $i++;
-        } else {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.");
-            line("Let's try again, %s!", $name);
-            break;
-        }
-    } while ($i < 3);
-
-    if ($i == 3) {
-        line("Congratulations, %s!", $name);
+    $result = [];
+    for ($i = 0; $i < $progressionLength; $i++) {
+        $result[] = $start + $step * $i;
     }
+    return $result;
+}
+
+function makeQuestion($hiddenMemberSpace, $progression, $space = '..')
+{
+    $progression[$hiddenMemberSpace] = $space;
+    return $progression;
+}
+function brainProgression()
+{
+    $getGame = function () {
+        $start = rand(0, 20);
+        $step = rand(2, 15);
+        $hiddenMemberSpace = rand(0, PROGRESSION_LENGTH - 1);
+        $progression = makeProgression($start, $step, PROGRESSION_LENGTH);
+        $correctAnswer = (string)$progression[$hiddenMemberSpace];
+        $question = implode(' ', makeQuestion($hiddenMemberSpace, $progression));
+        return [$question, $correctAnswer];
+    };
+    play($getGame, DESCRIPTION);
 }

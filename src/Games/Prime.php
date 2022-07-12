@@ -2,33 +2,29 @@
 
 namespace Src\Games\Prime;
 
-use function cli\line;
-use function cli\prompt;
+use function Src\Engine\play;
 
-function brainPrime(string $name): void
+const DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function isPrime($num): bool
 {
-    line('Answer "yes" if the number is prime. Otherwise answer "no".');
-    $i = 0;
-    do {
-        $num = rand($min = 2, $max = 200);
-        $correctAnswer = 'yes';
-        for ($check = $num - 1; $check > 1; $check--) {
-            if ($num % $check == 0) {
-                $correctAnswer = 'no';
-            }
-        }
-        line("Question: %s", $num);
-        $answer = prompt('Your answer ');
-        if ($answer === $correctAnswer) {
-            line('Correct!');
-            $i++;
-        } else {
-            line("'{$answer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.\nLet's try again, %s!", $name);
-            break;
-        }
-    } while ($i < 3);
-
-    if ($i == 3) {
-        line("Congratulations, %s!", $name);
+    if ($num <= 1) {
+        return false;
     }
+    for ($divisor = 2; $divisor <= $num / 2; $divisor++) {
+        if ($num % $divisor === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function brainPrime()
+{
+    $getGame = function () {
+        $question = rand(1, 99);
+        $correctAnswer = isPrime($question) ? 'yes' : 'no';
+        return [$question, $correctAnswer];
+    };
+    play($getGame, DESCRIPTION);
 }

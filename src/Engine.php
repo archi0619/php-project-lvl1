@@ -2,35 +2,26 @@
 
 namespace Src\Engine;
 
-use Src\Games\Even;
-use Src\Games\Calc;
-use Src\Games\Gcd;
-use Src\Games\Progression;
-use Src\Games\Prime;
-
 use function cli\line;
 use function cli\prompt;
 
-function play(string $game): void
+function play($game, $description)
 {
-    line('Welcome to the Brain Games!');
-    $name = prompt('May I have your name?');
+    line("Welcome to the Brain Game!");
+    $name = prompt("May I have your name?");
     line("Hello, %s!", $name);
+    line("$description");
 
-    switch ($game) {
-        case 'brain-even':
-            Even\brainEven($name);
-            break;
-        case 'brain-calc':
-            Calc\brainCalc($name);
-            break;
-        case 'brain-gcd':
-            GCD\brainGCD($name);
-            break;
-        case 'brain-progression':
-            Progression\brainProgression($name);
-            break;
-        case 'brain-prime':
-            Prime\brainPrime($name);
+    for ($win = 0; $win < 3; $win++) {
+        [$question, $correctAnswer] = $game();
+        line("Question: %s", $question);
+        $answer = prompt("Your answer");
+        if ($answer !== $correctAnswer) {
+            line("$answer is wrong answer ;(. Correct answer was $correctAnswer.");
+            line("Let's try again, %s!", $name);
+            exit;
+        }
+        line("Correct!");
     }
+    line("Congratulations, %s!", $name);
 }
