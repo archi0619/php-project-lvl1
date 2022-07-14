@@ -18,7 +18,6 @@ function play(callable $game, string $description): void
         [$question, $correctAnswer] = $game();
         line("Question: %s", $question);
         $answer = prompt("Your answer");
-        
         if ($answer !== $correctAnswer) {
             line("$answer is wrong answer ;(. Correct answer was $correctAnswer.");
             line("Let's try again, %s!", $name);

@@ -18,7 +18,7 @@ function gcd(int $firstNum, int $secondNum): string
     return $firstNum + $secondNum;
 }
 
-function brainGCD():void
+function brainGCD(): void
 {
     $getGame = function () {
         $firstNum = rand(1, 50);
