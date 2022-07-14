@@ -7,15 +7,17 @@ use function Src\Engine\play;
 const DESCRIPTION = "What is the result of the expression?";
 const OPERATORS = ["+", "-", "*"];
 
-function calculate(string $operator, int $firstNum, int $secondNum): string
+function calculate(string $operators, int $firstNum, int $secondNum): string
 {
-    switch ($operator) {
+    switch ($operators) {
         case "+":
-            return $firstNum + $secondNum;
+            return (string) ($firstNum + $secondNum);
         case "-":
-            return $firstNum - $secondNum;
+            return (string) ($firstNum - $secondNum);
         case "*":
-            return $firstNum * $secondNum;
+            return (string) ($firstNum * $secondNum);
+        default:
+            return '';
     }
 }
 
