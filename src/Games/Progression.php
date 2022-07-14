@@ -7,7 +7,7 @@ use function Src\Engine\play;
 const DESCRIPTION = "What number is missing in the progression?";
 const PROGRESSION_LENGTH = 15;
 
-function makeProgression($start, $step, $progressionLength = 15)
+function makeProgression(int $start, int $step, int $progressionLength = 15): array
 {
     $result = [];
     for ($i = 0; $i < $progressionLength; $i++) {
@@ -16,12 +16,12 @@ function makeProgression($start, $step, $progressionLength = 15)
     return $result;
 }
 
-function makeQuestion($hiddenMemberSpace, $progression, $space = '..')
+function makeQuestion(int $hiddenMemberSpace, array $progression, string $space = '..'): array
 {
     $progression[$hiddenMemberSpace] = $space;
     return $progression;
 }
-function brainProgression()
+function brainProgression(): void
 {
     $getGame = function () {
         $start = rand(0, 20);

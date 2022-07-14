@@ -7,7 +7,7 @@ use function Src\Engine\play;
 const DESCRIPTION = "What is the result of the expression?";
 const OPERATORS = ["+", "-", "*"];
 
-function calculate($operator, $firstNum, $secondNum): string
+function calculate(string $operator, int $firstNum, int $secondNum): int
 {
     switch ($operator) {
         case "+":
@@ -19,7 +19,7 @@ function calculate($operator, $firstNum, $secondNum): string
     }
 }
 
-function brainCalc()
+function brainCalc(): void
 {
     $getGame = function () {
         $firstNum = rand(1, 50);

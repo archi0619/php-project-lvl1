@@ -6,7 +6,7 @@ use function Src\Engine\play;
 
 const DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
-function gcd($firstNum, $secondNum): string
+function gcd(int $firstNum, int $secondNum): int
 {
     while ($firstNum !== 0 && $secondNum !== 0) {
         if ($firstNum > $secondNum) {
@@ -18,7 +18,7 @@ function gcd($firstNum, $secondNum): string
     return $firstNum + $secondNum;
 }
 
-function brainGCD()
+function brainGCD():void
 {
     $getGame = function () {
         $firstNum = rand(1, 50);

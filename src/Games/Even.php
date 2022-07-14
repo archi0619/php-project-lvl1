@@ -6,11 +6,11 @@ use function Src\Engine\play;
 
 const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-function isEven($num): bool
+function isEven(int $num): bool
 {
     return $num % 2 === 0;
 }
-function brainEven()
+function brainEven(): void
 {
     $getGame = function () {
         $question = rand(1, 99);
