@@ -5,7 +5,7 @@ namespace Src\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function play($game, $description)
+function play(array $game, string $description): void
 {
     line("Welcome to the Brain Game!");
     $name = prompt("May I have your name?");
