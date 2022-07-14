@@ -7,7 +7,7 @@ use function Src\Engine\play;
 const DESCRIPTION = "What is the result of the expression?";
 const OPERATORS = ["+", "-", "*"];
 
-function calculate(string $operator, int $firstNum, int $secondNum): int
+function calculate(string $operator, int $firstNum, int $secondNum): string
 {
     switch ($operator) {
         case "+":
