@@ -6,7 +6,7 @@ use function Src\Engine\play;
 
 const DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
-function gcd(int $firstNum, int $secondNum): int
+function gcd(int $firstNum, int $secondNum): string
 {
     while ($firstNum !== 0 && $secondNum !== 0) {
         if ($firstNum > $secondNum) {
