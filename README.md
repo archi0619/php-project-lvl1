@@ -11,7 +11,7 @@ Brain Games is a 5 console games:
 
 1. 'brain-even'. You should answer, is number even or not.
 
-2. 'brain-calc'. You need to find the result of expression.
+2. 'brain-calc'. Find the result of expression.
 
 3. 'brain-gcd'. Find the greatest common divisor (GCD) of two numbers.
 
