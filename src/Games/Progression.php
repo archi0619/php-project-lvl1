@@ -1,8 +1,8 @@
 <?php
 
-namespace Src\Games\Progression;
+namespace BrainGames\Games\Progression;
 
-use function Src\Engine\play;
+use function BrainGames\Engine\play;
 
 const DESCRIPTION = "What number is missing in the progression?";
 const PROGRESSION_LENGTH = 15;
@@ -21,7 +21,7 @@ function makeQuestion(int $hiddenMemberSpace, array $progression, string $space 
     $progression[$hiddenMemberSpace] = $space;
     return $progression;
 }
-function brainProgression(): void
+function playBrainProgression(): void
 {
     $getGame = function () {
         $start = rand(0, 20);

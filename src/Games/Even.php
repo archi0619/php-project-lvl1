@@ -1,8 +1,8 @@
 <?php
 
-namespace Src\Games\Even;
+namespace BrainGames\Games\Even;
 
-use function Src\Engine\play;
+use function BrainGames\Engine\play;
 
 const DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -10,7 +10,7 @@ function isEven(int $num): bool
 {
     return $num % 2 === 0;
 }
-function brainEven(): void
+function playBrainEven(): void
 {
     $getGame = function () {
         $question = rand(1, 99);

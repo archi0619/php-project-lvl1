@@ -1,13 +1,13 @@
 <?php
 
-namespace Src\Engine;
+namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
 const WINS = 3;
 
-function play(callable $game, string $description): void
+function play(callable $getGame, string $description): void
 {
     line("Welcome to the Brain Game!");
     $name = prompt("May I have your name?");
@@ -15,13 +15,13 @@ function play(callable $game, string $description): void
     line("$description");
 
     for ($i = 0; $i < WINS; $i++) {
-        [$question, $correctAnswer] = $game();
+        [$question, $correctAnswer] = $getGame();
         line("Question: %s", $question);
         $answer = prompt("Your answer");
         if ($answer !== $correctAnswer) {
             line("$answer is wrong answer ;(. Correct answer was $correctAnswer.");
             line("Let's try again, %s!", $name);
-            exit;
+            return;
         }
         line("Correct!");
     }
