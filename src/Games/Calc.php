@@ -11,11 +11,11 @@ function calculate(string $operators, int $firstNum, int $secondNum): int
 {
     switch ($operators) {
         case "+":
-            return (int) ($firstNum + $secondNum);
+            return ($firstNum + $secondNum);
         case "-":
-            return (int) ($firstNum - $secondNum);
+            return ($firstNum - $secondNum);
         case "*":
-            return (int) ($firstNum * $secondNum);
+            return ($firstNum * $secondNum);
         default:
             return 'Incorrect operand!';
     }
