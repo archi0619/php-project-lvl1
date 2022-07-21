@@ -10,12 +10,14 @@ function isEven(int $num): bool
 {
     return $num % 2 === 0;
 }
-function playBrainEven(): void
+
+function playGame(): void
 {
     $getGame = function () {
         $question = rand(1, 99);
         $correctAnswer = isEven($question) ? 'yes' : 'no';
         return [$question, $correctAnswer];
     };
+    
     play($getGame, DESCRIPTION);
 }

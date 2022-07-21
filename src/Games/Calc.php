@@ -17,11 +17,11 @@ function calculate(string $operators, int $firstNum, int $secondNum): int
         case "*":
             return ($firstNum * $secondNum);
         default:
-            return 'Incorrect operand!';
+            throw new \Exception('Incorrect operand!');
     }
 }
 
-function playBrainCalc(): void
+function playGame(): void
 {
     $getGame = function () {
         $firstNum = rand(1, 50);
@@ -31,5 +31,6 @@ function playBrainCalc(): void
         $correctAnswer = (string) calculate($operator, $firstNum, $secondNum);
         return [$question, $correctAnswer];
     };
+    
     play($getGame, DESCRIPTION);
 }

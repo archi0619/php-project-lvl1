@@ -16,21 +16,18 @@ function makeProgression(int $start, int $step, int $progressionLength = 15): ar
     return $result;
 }
 
-function makeQuestion(int $hiddenMemberSpace, array $progression, string $space = '..'): array
-{
-    $progression[$hiddenMemberSpace] = $space;
-    return $progression;
-}
-function playBrainProgression(): void
+function playGame(): void
 {
     $getGame = function () {
         $start = rand(0, 20);
         $step = rand(2, 15);
-        $hiddenMemberSpace = rand(0, PROGRESSION_LENGTH - 1);
         $progression = makeProgression($start, $step, PROGRESSION_LENGTH);
+        $hiddenMemberSpace = rand(0, PROGRESSION_LENGTH - 1);
         $correctAnswer = (string)$progression[$hiddenMemberSpace];
-        $question = implode(' ', makeQuestion($hiddenMemberSpace, $progression));
+        $progression[$hiddenMemberSpace] = '..';
+        $question = implode(' ', $progression);
         return [$question, $correctAnswer];
     };
+    
     play($getGame, DESCRIPTION);
 }

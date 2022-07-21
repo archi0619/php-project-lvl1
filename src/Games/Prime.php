@@ -16,15 +16,17 @@ function isPrime(int $num): bool
             return false;
         }
     }
+    
     return true;
 }
 
-function playBrainPrime(): void
+function playGame(): void
 {
     $getGame = function () {
         $question = rand(1, 99);
         $correctAnswer = isPrime($question) ? 'yes' : 'no';
         return [$question, $correctAnswer];
     };
+
     play($getGame, DESCRIPTION);
 }

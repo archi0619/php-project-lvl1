@@ -15,10 +15,11 @@ function gcd(int $firstNum, int $secondNum): string
             $secondNum = $secondNum % $firstNum;
         }
     }
+    
     return $firstNum + $secondNum;
 }
 
-function playBrainGCD(): void
+function playGame(): void
 {
     $getGame = function () {
         $firstNum = rand(1, 50);
@@ -27,5 +28,6 @@ function playBrainGCD(): void
         $correctAnswer = gcd($firstNum, $secondNum);
         return [$question, $correctAnswer];
     };
+
     play($getGame, DESCRIPTION);
 }
