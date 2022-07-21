@@ -16,7 +16,6 @@ function play(callable $getGame, string $description): void
 
     for ($i = 0; $i < WINS; $i++) {
         [$question, $correctAnswer] = $getGame();
-        
         line("Question: %s", $question);
         $answer = prompt("Your answer");
 

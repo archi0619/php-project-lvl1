@@ -18,6 +18,5 @@ function playGame(): void
         $correctAnswer = isEven($question) ? 'yes' : 'no';
         return [$question, $correctAnswer];
     };
-    
     play($getGame, DESCRIPTION);
 }

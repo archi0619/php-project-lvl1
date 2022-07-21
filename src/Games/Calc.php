@@ -31,6 +31,5 @@ function playGame(): void
         $correctAnswer = (string) calculate($operator, $firstNum, $secondNum);
         return [$question, $correctAnswer];
     };
-    
     play($getGame, DESCRIPTION);
 }

@@ -28,6 +28,5 @@ function playGame(): void
         $question = implode(' ', $progression);
         return [$question, $correctAnswer];
     };
-    
     play($getGame, DESCRIPTION);
 }

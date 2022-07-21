@@ -15,7 +15,6 @@ function gcd(int $firstNum, int $secondNum): string
             $secondNum = $secondNum % $firstNum;
         }
     }
-    
     return $firstNum + $secondNum;
 }
 
