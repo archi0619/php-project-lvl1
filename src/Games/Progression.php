@@ -19,13 +19,17 @@ function makeProgression(int $start, int $step, int $progressionLength = 15): ar
 function playGame(): void
 {
     $getGame = function () {
+
         $start = rand(0, 20);
         $step = rand(2, 15);
+
         $progression = makeProgression($start, $step, PROGRESSION_LENGTH);
         $hiddenMemberSpace = rand(0, PROGRESSION_LENGTH - 1);
+
         $correctAnswer = (string)$progression[$hiddenMemberSpace];
         $progression[$hiddenMemberSpace] = '..';
         $question = implode(' ', $progression);
+
         return [$question, $correctAnswer];
     };
     play($getGame, DESCRIPTION);
